@@ -2,55 +2,19 @@ import {
   StyleSheet,
   Text,
   View,
-  SectionList,
-  TouchableOpacity,
+  TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import obj from "./array";
+import Exemple from "./Exemple";
 
 const App = () => {
-  /*   const obj = [
-    { name: "aaaaa", age: 25 },
-    { name: "bbbb", age: 23 },
-    { name: "cccc", age: 20 },
-    { name: "dddd", age: 15 },
-    { name: "eeee", age: 5 },
-    { name: "aaaaa", age: 25 },
-    { name: "bbbb", age: 23 },
-    { name: "cccc", age: 20 },
-    { name: "dddd", age: 15 },
-    { name: "eeee", age: 5 },
-    { name: "aaaaa", age: 25 },
-    { name: "bbbb", age: 23 },
-    { name: "cccc", age: 20 },
-    { name: "dddd", age: 15 },
-    { name: "eeee", age: 5 },
-    { name: "aaaaa", age: 25 },
-    { name: "bbbb", age: 23 },
-    { name: "cccc", age: 20 },
-    { name: "dddd", age: 15 },
-    { name: "eeee", age: 5 },
-  ]; */
-  const [family, setFamily] = useState(obj);
+
+  
 
   return (
     <View style={styles.container}>
-      <SectionList
-        sections={family}
-        keyExtractor={(item, index) => index.toString()}
-        renderSectionHeader={({ section }) => (
-          <TouchableOpacity style={styles.list}>
-            <Text style={styles.textList}>{section.role}</Text>
-          </TouchableOpacity>
-        )}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity >
-              <Text style={styles.textListData}>{item}</Text>
-            </TouchableOpacity>
-          );
-        }}
-      />
+      <Exemple/>
     </View>
   );
 };
