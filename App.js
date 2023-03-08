@@ -35,17 +35,18 @@ const App = () => {
   ];
   const [family, setFamily] = useState(obj);
   const [refresh, setRefresh] = useState(false);
+  const [inverted, setInverted] = useState(false);
 
   const onRefresh = () => {
-    setRefresh(true);
-    Alert.alert("Info", "En plein rafraichissement", [
+    setInverted(!inverted)
+/*     Alert.alert("Info", "En plein rafraichissement", [
       {
         text: "OK",
         onPress: () => console.warn("Liste rafraichit"),
         style: "destructive",
       },
     ]);
-    setRefresh(false);
+    setRefresh(false); */
   };
 
   return (
@@ -62,6 +63,11 @@ const App = () => {
           );
         }}
         keyExtractor={(item, index) => index.toString()}
+        horizontal
+        inverted={inverted}
+        refreshControl={
+          <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+        }
       />
     </View>
   );
