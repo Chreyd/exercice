@@ -12,26 +12,26 @@ import React, { useState } from "react";
 
 const App = () => {
   const obj = [
-    { id: 1, name: "aaaaa", age: 25 },
-    { id: 2, name: "bbbb", age: 23 },
-    { id: 3, name: "cccc", age: 20 },
-    { id: 4, name: "dddd", age: 15 },
-    { id: 5, name: "eeee", age: 5 },
-    { id: 6, name: "aaaaa", age: 25 },
-    { id: 7, name: "bbbb", age: 23 },
-    { id: 8, name: "cccc", age: 20 },
-    { id: 9, name: "dddd", age: 15 },
-    { id: 10, name: "eeee", age: 5 },
-    { id: 11, name: "aaaaa", age: 25 },
-    { id: 12, name: "bbbb", age: 23 },
-    { id: 13, name: "cccc", age: 20 },
-    { id: 14, name: "dddd", age: 15 },
-    { id: 15, name: "eeee", age: 5 },
-    { id: 16, name: "aaaaa", age: 25 },
-    { id: 17, name: "bbbb", age: 23 },
-    { id: 18, name: "cccc", age: 20 },
-    { id: 19, name: "dddd", age: 15 },
-    { id: 20, name: "eeee", age: 5 },
+    { name: "aaaaa", age: 25 },
+    { name: "bbbb", age: 23 },
+    { name: "cccc", age: 20 },
+    { name: "dddd", age: 15 },
+    { name: "eeee", age: 5 },
+    { name: "aaaaa", age: 25 },
+    { name: "bbbb", age: 23 },
+    { name: "cccc", age: 20 },
+    { name: "dddd", age: 15 },
+    { name: "eeee", age: 5 },
+    { name: "aaaaa", age: 25 },
+    { name: "bbbb", age: 23 },
+    { name: "cccc", age: 20 },
+    { name: "dddd", age: 15 },
+    { name: "eeee", age: 5 },
+    { name: "aaaaa", age: 25 },
+    { name: "bbbb", age: 23 },
+    { name: "cccc", age: 20 },
+    { name: "dddd", age: 15 },
+    { name: "eeee", age: 5 },
   ];
   const [family, setFamily] = useState(obj);
   const [refresh, setRefresh] = useState(false);
@@ -45,23 +45,23 @@ const App = () => {
         style: "destructive",
       },
     ]);
-    setRefresh(false)
+    setRefresh(false);
   };
 
   return (
     <View style={styles.container}>
       <FlatList
         data={family}
-        renderItem={({item})=>{
-          return(
+        renderItem={({ item }) => {
+          return (
             <TouchableOpacity style={styles.list}>
               <Text style={styles.textList}>
                 {item.name} || Age: {item.age}
               </Text>
             </TouchableOpacity>
-          )
+          );
         }}
-        keyExtractor={item=>item.id}
+        keyExtractor={(item, index) => index.toString()}
       />
     </View>
   );
