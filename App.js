@@ -6,6 +6,7 @@ import {
   ScrollView,
   RefreshControl,
   Alert,
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 
@@ -49,21 +50,19 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refresh} onRefresh={onRefresh} colors={['red']} />
-        }
-      >
-        {family.map((member) => {
-          return (
-            <TouchableOpacity key={member.id} style={styles.list}>
+      <FlatList
+        data={family}
+        renderItem={({item})=>{
+          return(
+            <TouchableOpacity style={styles.list}>
               <Text style={styles.textList}>
-                {member.name} || Age: {member.age}
+                {item.name} || Age: {item.age}
               </Text>
             </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
+          )
+        }}
+        keyExtractor={item=>item.id}
+      />
     </View>
   );
 };
