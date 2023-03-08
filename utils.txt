@@ -1,0 +1,17 @@
+      <FlatList
+        data={family}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity style={styles.list}>
+              <Text style={styles.textList}>
+                {item.name} || Age: {item.age}
+              </Text>
+            </TouchableOpacity>
+          );
+        }}
+        keyExtractor={(item, index) => index.toString()}
+        inverted={inverted}
+        refreshControl={
+          <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+        }
+      />

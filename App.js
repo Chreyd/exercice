@@ -2,16 +2,14 @@ import {
   StyleSheet,
   Text,
   View,
+  SectionList,
   TouchableOpacity,
-  ScrollView,
-  RefreshControl,
-  Alert,
-  FlatList,
 } from "react-native";
 import React, { useState } from "react";
+import obj from "./array";
 
 const App = () => {
-  const obj = [
+  /*   const obj = [
     { name: "aaaaa", age: 25 },
     { name: "bbbb", age: 23 },
     { name: "cccc", age: 20 },
@@ -32,42 +30,26 @@ const App = () => {
     { name: "cccc", age: 20 },
     { name: "dddd", age: 15 },
     { name: "eeee", age: 5 },
-  ];
+  ]; */
   const [family, setFamily] = useState(obj);
-  const [refresh, setRefresh] = useState(false);
-  const [inverted, setInverted] = useState(false);
-
-  const onRefresh = () => {
-    setInverted(!inverted)
-/*     Alert.alert("Info", "En plein rafraichissement", [
-      {
-        text: "OK",
-        onPress: () => console.warn("Liste rafraichit"),
-        style: "destructive",
-      },
-    ]);
-    setRefresh(false); */
-  };
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={family}
+      <SectionList
+        sections={family}
+        keyExtractor={(item, index) => index.toString()}
+        renderSectionHeader={({ section }) => (
+          <TouchableOpacity style={styles.list}>
+            <Text style={styles.textList}>{section.role}</Text>
+          </TouchableOpacity>
+        )}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity style={styles.list}>
-              <Text style={styles.textList}>
-                {item.name} || Age: {item.age}
-              </Text>
+            <TouchableOpacity >
+              <Text style={styles.textListData}>{item}</Text>
             </TouchableOpacity>
           );
         }}
-        keyExtractor={(item, index) => index.toString()}
-        horizontal
-        inverted={inverted}
-        refreshControl={
-          <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
-        }
       />
     </View>
   );
@@ -95,4 +77,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 25,
   },
+  textListData:{
+    color: 'grey',
+    padding: 9,
+    fontSize: 19,
+    textAlign: 'center',
+  }
 });
